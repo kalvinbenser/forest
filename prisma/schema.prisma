@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model TreeSites {
+  tree_site_id     Int      @id @default(autoincrement())
+  site_name        String   @db.VarChar(255)
+  site_image       String   @db.VarChar(255)
+  rate_per_tree    Int
+  total_plant      Int
+  availabile_plant Int
+  site_description String   @db.VarChar(255)
+  state            String   @db.VarChar(255)
+  city             String   @db.VarChar(255)
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+}
